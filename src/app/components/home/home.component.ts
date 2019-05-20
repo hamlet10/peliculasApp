@@ -12,13 +12,13 @@ export class HomeComponent {
   pelicula: Pelicula;
   constructor(public _ps: PeliculasService) {
     this._ps.getPopulares().subscribe((data: any) => {
-      for (let i = 0; data.results.length > i; i++) {
-        this.pelicula.id = data.results[i].id;
-        this.pelicula.backdrop_path = data.results[i].backdrop_path;
-        this.pelicula.original_title = data.results[i].original_title;
-        this.peliculas.push(this.pelicula);
-        console.log(data.results[i]);
-      }
+      // for (let i = 0; data.results.length > i; i++) {
+      //   this.pelicula.id = data.results[i].id;
+      //   this.pelicula.backdrop_path = data.results[i].backdrop_path;
+      //   this.pelicula.original_title = data.results[i].original_title;
+      //   this.peliculas.push(this.pelicula);
+      //   console.log(data.results[i]);
+      // }
       console.log(data);
     });
   }
