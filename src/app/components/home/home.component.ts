@@ -9,7 +9,7 @@ import { element } from "@angular/core/src/render3";
 })
 export class HomeComponent {
   peliculas: Pelicula[] = [];
-  pelicula: Pelicula;
+  // pelicula: Pelicula;
   constructor(public _ps: PeliculasService) {
     this._ps.getPopulares().subscribe((data: any) => {
       // for (let i = 0; data.results.length > i; i++) {
@@ -19,7 +19,9 @@ export class HomeComponent {
       //   this.peliculas.push(this.pelicula);
       //   console.log(data.results[i]);
       // }
-      console.log(data);
+
+      this.peliculas = data.results as Array<Pelicula>;
+      console.log(this.peliculas);
     });
   }
 }
