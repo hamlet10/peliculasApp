@@ -36,4 +36,5 @@ export interface Pelicula {
   id?: number;
   original_title: string;
   backdrop_path: string;
+  poster_path: string;
 }

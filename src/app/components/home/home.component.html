@@ -4,7 +4,13 @@
     <p class="lead">Esta es una aplicación de peliculas.</p>
   </div>
 </div>
-<div class="container">
-  <br />
-  <h1>Cartelera</h1>
+
+<div *ngFor="let pelicula of peliculas; let i = index">
+  <img
+    width="300px"
+    height="300px"
+    src="http://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}"
+    [alt]="pelicula.original_title"
+  />
+  <span> {{ pelicula.original_title }} </span>
 </div>
