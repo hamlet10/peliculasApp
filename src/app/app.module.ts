@@ -12,9 +12,10 @@ import { APP_ROUTING } from "./providers/app.routes";
 
 //services
 import { PeliculasService } from "../app/providers/peliculas.service";
+import { DescriptionPipe } from './pipes/description.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, BuscarComponent, NavbarComponent],
+  declarations: [AppComponent, HomeComponent, BuscarComponent, NavbarComponent, DescriptionPipe],
   imports: [
     BrowserModule,
     HttpClientModule,

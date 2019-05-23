@@ -5,12 +5,28 @@
   </div>
 </div>
 
-<div *ngFor="let pelicula of peliculas; let i = index">
-  <img
-    width="300px"
-    height="300px"
-    src="http://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}"
-    [alt]="pelicula.original_title"
-  />
-  <span> {{ pelicula.original_title }} </span>
+<div class="container main-container">
+  <div class="card-columns">
+    <div class="card" *ngFor="let pelicula of peliculas; let i = index">
+      <img
+        width="300px"
+        height="300px"
+        src="http://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}"
+        [alt]="pelicula.original_title"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ pelicula.original_title }}</h5>
+        <p class="card-text">
+          {{ pelicula.overview | description }}
+        </p>
+        <button
+          (click)="ver_pelicula(pelicula)"
+          type="button"
+          class="btn btn-outline-primary btn-block"
+        >
+          Ver más...
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
