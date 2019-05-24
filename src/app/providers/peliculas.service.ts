@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { jsonpCallbackContext } from "@angular/common/http/src/module";
 
 @Injectable()
 export class PeliculasService {
@@ -28,7 +27,7 @@ export class PeliculasService {
       this.apikey
     }&language=es&callback=JSONP_CALLBACK`;
 
-    return this.http.jsonp(url, "callback").pipe(map(res => res));
+    return this.http.jsonp(url, "buscarPelicula").pipe(map(res => res));
   }
 }
 
