@@ -1,3 +1,12 @@
-<p>
-  buscar works!
-</p>
+<div class="col-md-12">
+  <br />
+  <div class="input-group mb-3">
+    <input
+      type="search class="
+      class="form-control"
+      placeholder="Bucar peliculla"
+      #texto
+      (keyup.enter)="buscar_pelicula(texto.value)"
+    />
+  </div>
+</div>
