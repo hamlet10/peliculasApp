@@ -11,7 +11,7 @@
       <img
         width="300px"
         height="300px"
-        src="http://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}"
+        src="{{ pelicula | peliculasImages }}"
         [alt]="pelicula.original_title"
       />
       <div class="card-body">
@@ -20,7 +20,7 @@
           {{ pelicula.overview | description }}
         </p>
         <button
-          (click)="ver_pelicula(pelicula)"
+          (click)="ver_pelicula(pelicula.id)"
           type="button"
           class="btn btn-outline-primary btn-block"
         >
