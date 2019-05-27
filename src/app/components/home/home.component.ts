@@ -20,6 +20,5 @@ export class HomeComponent {
   ver_pelicula(id: number) {
     // console.log(id);
     this._router.navigate(["/pelicula", id]);
-    this._ps.getPeliculaById(id).subscribe(data => console.log(data));
   }
 }
