@@ -1,9 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { PeliculasService, Pelicula } from "../../providers/peliculas.service";
-<<<<<<< HEAD
-=======
 import { Router } from "@angular/router";
->>>>>>> 473106755c7ea7a7c9489294f254e7278aa3b85b
 
 @Component({
   selector: "app-home",

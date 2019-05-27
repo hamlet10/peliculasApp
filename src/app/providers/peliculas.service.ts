@@ -27,9 +27,6 @@ export class PeliculasService {
       this.apikey
     }&language=es&callback=JSONP_CALLBACK`;
 
-<<<<<<< HEAD
-    return this.http.jsonp(url, "buscarPelicula").pipe(map(res => res));
-=======
     return this.http.jsonp(url, callback).pipe(map(res => res));
   }
 
@@ -39,7 +36,6 @@ export class PeliculasService {
     }&&language=es&callback=JSONP_CALLBACK`;
 
     return this.http.jsonp(url, callback).pipe(map(res => res));
->>>>>>> 473106755c7ea7a7c9489294f254e7278aa3b85b
   }
 }
 
