@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PeliculasService } from "../../providers/peliculas.service";
+import { PeliculasService, Pelicula } from "../../providers/peliculas.service";
 
 @Component({
   selector: "app-buscar",
@@ -7,14 +7,15 @@ import { PeliculasService } from "../../providers/peliculas.service";
   styles: []
 })
 export class BuscarComponent implements OnInit {
-  constructor() {}
+  peliculas: Pelicula[] = [];
+  constructor(private _ps: PeliculasService) {}
 
-  _ps: PeliculasService;
   ngOnInit() {}
 
-  //No furula
   buscar_pelicula(texto: string) {
-    console.log(texto);
-    this._ps.buscarPelicula(texto).subscribe((data: any) => console.log(data));
+    this._ps.buscarPelicula(texto).subscribe((data: any) => {
+      this.peliculas = data.results as Array<Pelicula>;
+      console.log(this.peliculas);
+    });
   }
 }
