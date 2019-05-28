@@ -15,6 +15,7 @@ export class HomeComponent {
       this.peliculas = data.results as Array<Pelicula>;
       console.log(this.peliculas);
     });
+    this._ps.getCartelera();
   }
 
   ver_pelicula(id: number) {

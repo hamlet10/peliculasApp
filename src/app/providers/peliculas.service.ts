@@ -37,6 +37,23 @@ export class PeliculasService {
 
     return this.http.jsonp(url, callback).pipe(map(res => res));
   }
+
+  getCartelera() {
+  
+    let sday = new Date().getDate();
+    let smonth = new Date().getMonth();
+    let syear = new Date().getFullYear();
+    let sdate = syear + "-" + smonth + "-" + sday;
+    let eday = ;
+    let 
+    if( eday > 12){
+
+    }
+
+    
+    
+    console.log(sdate);
+  }
 }
 
 export interface Pelicula {
