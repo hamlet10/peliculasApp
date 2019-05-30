@@ -17,24 +17,30 @@ export class PeliculaComponent implements OnInit {
     poster_path: "",
     overview: ""
   };
+  caller: string;
+
   constructor(
     private _ps: PeliculasService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router
   ) {
     let id: number;
+
     this._activatedRoute.params.subscribe(params => {
-      console.log(params["id"]);
+      // console.log(params["id"]);
       id = params["id"];
     });
     this._ps.getPeliculaById(id).subscribe((data: Pelicula) => {
       this.pelicula = data;
     });
+    this.caller = this._activatedRoute.snapshot.routeConfig.path as string;
+    this.caller = this.caller.split("/")[0];
+    console.log(this.caller);
   }
 
   ngOnInit() {}
 
   regresar() {
-    this._router.navigate(["/home"]);
+    this._router.navigate([`/${this.caller}`]);
   }
 }

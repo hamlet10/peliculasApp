@@ -9,17 +9,24 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent {
   peliculas: Pelicula[] = [];
-  @Input() pelicula: Pelicula;
+  peliculasCartelera: Pelicula[] = [];
+  pequenos: Pelicula[] = [];
+
   constructor(public _ps: PeliculasService, private _router: Router) {
     this._ps.getPopulares().subscribe((data: any) => {
       this.peliculas = data.results as Array<Pelicula>;
-      console.log(this.peliculas);
     });
-    this._ps.getCartelera();
+    this._ps.getCartelera().subscribe((data: any) => {
+      this.peliculasCartelera = data.results as Array<Pelicula>;
+    });
+    this._ps.getPopularKids().subscribe((data: any) => {
+      this.pequenos = data.results as Array<Pelicula>;
+      console.log(this.pequenos);
+    });
   }
 
   ver_pelicula(id: number) {
     // console.log(id);
-    this._router.navigate(["/pelicula", id]);
+    this._router.navigate(["home/pelicula", id]);
   }
 }

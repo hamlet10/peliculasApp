@@ -39,20 +39,37 @@ export class PeliculasService {
   }
 
   getCartelera() {
-  
     let sday = new Date().getDate();
     let smonth = new Date().getMonth();
     let syear = new Date().getFullYear();
     let sdate = syear + "-" + smonth + "-" + sday;
-    let eday = ;
-    let 
-    if( eday > 12){
-
+    let eday = sday;
+    let emonth = smonth + 1;
+    let eyear = syear;
+    if (emonth > 12) {
+      emonth = 1;
+      eyear = eyear + 1;
     }
+    let edate = eyear + "-" + emonth + "-" + eday;
 
-    
-    
+    let url = `${
+      this.urlMoviedb
+    }/discover/movie?primary_release_date.gte=${sdate}&primary_release_date.lte=${edate}&sort_by=popularity.desc&api_key=${
+      this.apikey
+    }&language=es&callback=JSONP_CALLBACK`;
+    return this.http.jsonp(url, "JSONP_CALLBACK").pipe(map(res => res));
+
     console.log(sdate);
+  }
+
+  getPopularKids() {
+    let url = `${
+      this.urlMoviedb
+    }/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${
+      this.apikey
+    }&language=es&callback=JSONP_CALLBACK`;
+
+    return this.http.jsonp(url, "JSONP_CALLBACK").pipe(map(res => res));
   }
 }
 

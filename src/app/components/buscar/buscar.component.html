@@ -5,8 +5,9 @@
       type="search class="
       class="form-control"
       placeholder="Bucar peliculla"
-      #texto
-      (keyup.enter)="buscar_pelicula(texto.value)"
+      [(ngModel)]="buscar"
+      #texto="ngModel"
+      (keyup.enter)="buscar_pelicula()"
     />
   </div>
 
@@ -25,7 +26,7 @@
             {{ pelicula.overview | description }}
           </p>
           <button
-            (click)="ver_pelicula(pelicula)"
+            (click)="ver_pelicula(pelicula.id)"
             type="button"
             class="btn btn-outline-primary btn-block"
           >

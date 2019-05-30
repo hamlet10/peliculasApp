@@ -4,6 +4,7 @@ import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 import { HomeComponent } from "./components/home/home.component";
 import { BuscarComponent } from "./components/buscar/buscar.component";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { FormsModule   } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 
@@ -30,7 +31,8 @@ import { PeliculaComponent } from "./components/pelicula/pelicula.component";
     BrowserModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    APP_ROUTING
+    APP_ROUTING,
+    FormsModule
   ],
   providers: [PeliculasService],
   bootstrap: [AppComponent]
