@@ -1,15 +1,15 @@
 <div class="col-md-12">
   <br />
-  <div class="input-group mb-3">
-    <input
-      type="search class="
-      class="form-control"
-      placeholder="Bucar peliculla"
-      [(ngModel)]="buscar"
-      #texto="ngModel"
-      (keyup.enter)="buscar_pelicula()"
-    />
-  </div>
+  <form [formGroup]="forma" (keyup.enter)="buscar_pelicula()">
+    <div class="input-group mb-3">
+      <input
+        type="search class="
+        class="form-control"
+        placeholder="Bucar peliculla"
+        formControlName="buscar"
+      />
+    </div>
+  </form>
 
   <div class="container main-container">
     <div class="card-columns">

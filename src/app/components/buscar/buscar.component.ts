@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PeliculasService, Pelicula } from "../../providers/peliculas.service";
 import { Router } from "@angular/router";
+import { FormGroup, FormControl, NgModel } from "@angular/forms";
 
 @Component({
   selector: "app-buscar",
@@ -9,21 +10,28 @@ import { Router } from "@angular/router";
 })
 export class BuscarComponent implements OnInit {
   peliculas: Pelicula[] = [];
-  buscar: string;
-  constructor(private _ps: PeliculasService, private _router: Router) {}
+  forma: FormGroup;
+  texto: string;
+
+  constructor(private _ps: PeliculasService, private _router: Router) {
+    this.forma = new FormGroup({
+      buscar: new FormControl("")
+    });
+  }
 
   ngOnInit() {}
 
   buscar_pelicula() {
-    this._ps.buscarPelicula(this.buscar).subscribe((data: any) => {
+    this.texto = this.forma.value.buscar;
+    this._ps.buscarPelicula(this.texto).subscribe((data: any) => {
       this.peliculas = data.results as Array<Pelicula>;
       console.log(this.peliculas);
     });
-    // console.log(this.buscar);
+    this._router.navigate(["buscar", this.texto]);
   }
 
   ver_pelicula(id: number) {
     // console.log(id);
-    this._router.navigate(["buscar/pelicula", id]);
+    this._router.navigate([`buscar/${this.texto}/pelicula`, id]);
   }
 }

@@ -35,7 +35,7 @@ export class PeliculaComponent implements OnInit {
     });
     this.caller = this._activatedRoute.snapshot.routeConfig.path as string;
     this.caller = this.caller.split("/")[0];
-    console.log(this.caller);
+    this._activatedRoute.parent.params.subscribe(d => console.log(d));
   }
 
   ngOnInit() {}
