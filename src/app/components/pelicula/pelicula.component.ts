@@ -35,12 +35,22 @@ export class PeliculaComponent implements OnInit {
     });
     this.caller = this._activatedRoute.snapshot.routeConfig.path as string;
     this.caller = this.caller.split("/")[0];
-    this._activatedRoute.parent.params.subscribe(d => console.log(d));
+
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   regresar() {
-    this._router.navigate([`/${this.caller}`]);
+    if (this.caller == 'home') {
+      this._router.navigate([`/home`]);
+    } else {
+      let texto: string
+      this._activatedRoute.params.subscribe(params => {
+        texto = params.texto;
+      });
+      this._router.navigate(['buscar', texto])
+      // console.log(texto);
+
+    }
   }
 }

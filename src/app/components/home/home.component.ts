@@ -21,7 +21,6 @@ export class HomeComponent {
     });
     this._ps.getPopularKids().subscribe((data: any) => {
       this.pequenos = data.results as Array<Pelicula>;
-      console.log(this.pequenos);
     });
   }
 
