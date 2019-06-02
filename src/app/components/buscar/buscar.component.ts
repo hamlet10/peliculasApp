@@ -22,30 +22,44 @@ export class BuscarComponent implements OnInit {
   }
 
   ngOnInit() {
+    let param
+    this._activatedRoute.params.subscribe(res => {
+      param = res.texto
 
-    let parametro
-    this._activatedRoute.params.subscribe(params => {
-      parametro = params.texto
-      // console.log(params);
+
+      if (typeof param === 'undefined') {
+        // console.log('param: ', param);
+
+      } else {
+        console.log('este es el parametro: ', param);
+        // this.forma.value.buscar = param
+        this.forma.setValue({ buscar: param })
+        this.buscar_pelicula(param)
+
+
+
+      }
+
+
     })
-    if (parametro != undefined) {
-      this.forma.reset({
-        buscar: parametro
-      })
-
-      this.buscar_pelicula()
-    }
 
 
   }
 
 
-  buscar_pelicula() {
-    this.texto = this.forma.value.buscar;
-    this._ps.buscarPelicula(this.texto).subscribe((data: any) => {
-      this.peliculas = data.results as Array<Pelicula>;
-    });
-    // this._router.navigate(["buscar", this.texto]);
+  buscar_pelicula(buscar: string) {
+
+    buscar = this.forma.value.buscar;
+    this.texto = buscar
+    // console.log('buscar:', buscar);
+    // console.log('texto:', this.texto);
+    this._ps.buscarPelicula(buscar).subscribe((res: any) => {
+      this.peliculas = res.results as Array<Pelicula>
+
+      // console.log(this.peliculas)
+    })
+
+
 
   }
 
